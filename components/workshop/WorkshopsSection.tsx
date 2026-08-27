@@ -1,0 +1,13 @@
+import { Container } from "@/components/ui/Container";
+import { Section } from "@/components/ui/Section";
+import { SectionHeader } from "@/components/ui/SectionHeader";
+
+export function WorkshopsSection() {
+  return (
+    <Section>
+      <Container>
+        <SectionHeader eyebrow="Workshops" heading="Workshops Section" />
+      </Container>
+    </Section>
+  );
+}
