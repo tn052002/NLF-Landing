@@ -1,13 +1,5 @@
-import { Container } from "@/components/ui/Container";
-import { Section } from "@/components/ui/Section";
-import { SectionHeader } from "@/components/ui/SectionHeader";
+import { PlaceholderSection, type WorkshopSectionProps } from "./PlaceholderSection";
 
-export function FAQSection() {
-  return (
-    <Section variant="muted">
-      <Container>
-        <SectionHeader eyebrow="FAQ" heading="FAQ Section" />
-      </Container>
-    </Section>
-  );
+export function FAQSection({ copy }: WorkshopSectionProps) {
+  return <PlaceholderSection copy={copy} variant="muted" />;
 }

@@ -1,13 +1,5 @@
-import { Container } from "@/components/ui/Container";
-import { Section } from "@/components/ui/Section";
-import { SectionHeader } from "@/components/ui/SectionHeader";
+import { PlaceholderSection, type WorkshopSectionProps } from "./PlaceholderSection";
 
-export function PracticeSection() {
-  return (
-    <Section>
-      <Container>
-        <SectionHeader eyebrow="Practice" heading="Practice Section" />
-      </Container>
-    </Section>
-  );
+export function PracticeSection({ copy }: WorkshopSectionProps) {
+  return <PlaceholderSection copy={copy} />;
 }

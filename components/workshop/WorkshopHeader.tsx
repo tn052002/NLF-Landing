@@ -1,4 +1,5 @@
 import { Container } from "@/components/ui/Container";
+import type { WorkshopCopy } from "@/lib/i18n";
 import styles from "./WorkshopHeader.module.css";
 
 const phoneNumber = "(555) 123-4567";
@@ -18,14 +19,14 @@ function PhoneIcon() {
   );
 }
 
-export function WorkshopHeader() {
+export function WorkshopHeader({ copy }: { copy: WorkshopCopy["header"] }) {
   return (
     <header className={styles.header}>
       <Container>
         <nav className={styles.nav} aria-label="Workshop navigation">
-          <a className={styles.brand} href="/workshop" aria-label="NLF Neuro Linguistic Fitness">
+          <a className={styles.brand} href={copy.brandHref} aria-label={copy.ariaLabel}>
             <span className={styles.logo}>NLF</span>
-            <span className={styles.tagline}>Neuro Linguistic Fitness</span>
+            <span className={styles.tagline}>{copy.tagline}</span>
           </a>
 
           <a className={styles.contact} href={phoneHref}>
@@ -33,7 +34,7 @@ export function WorkshopHeader() {
               <PhoneIcon />
             </span>
             <span className={styles.contactText}>
-              <span className={styles.question}>Have a Question</span>
+              <span className={styles.question}>{copy.question}</span>
               <span className={styles.phoneNumber}>{phoneNumber}</span>
             </span>
           </a>

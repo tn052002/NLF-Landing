@@ -1,13 +1,5 @@
-import { Container } from "@/components/ui/Container";
-import { Section } from "@/components/ui/Section";
-import { SectionHeader } from "@/components/ui/SectionHeader";
+import { PlaceholderSection, type WorkshopSectionProps } from "./PlaceholderSection";
 
-export function RecognitionSection() {
-  return (
-    <Section>
-      <Container>
-        <SectionHeader eyebrow="Recognition" heading="Recognition Section" />
-      </Container>
-    </Section>
-  );
+export function RecognitionSection({ copy }: WorkshopSectionProps) {
+  return <PlaceholderSection copy={copy} />;
 }
