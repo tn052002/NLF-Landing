@@ -8,6 +8,16 @@ export type SectionCopy = {
   heading: string;
 };
 
+export type HeroCopy = {
+  eyebrow: string;
+  heading: string;
+  description: string;
+  primaryCta: string;
+  secondaryCta: string;
+  trustItems: string[];
+  mediaLabel: string;
+};
+
 export type WorkshopCopy = {
   header: {
     ariaLabel: string;
@@ -21,7 +31,7 @@ export type WorkshopCopy = {
     faq: SectionCopy;
     finalCta: SectionCopy;
     fundamental: SectionCopy;
-    hero: SectionCopy;
+    hero: HeroCopy;
     movementDiscovery: SectionCopy;
     practice: SectionCopy;
     recognition: SectionCopy;
@@ -69,7 +79,16 @@ export const workshopCopy: Record<Locale, WorkshopCopy> = {
       faq: { eyebrow: "FAQ", heading: "FAQ Section" },
       finalCta: { eyebrow: "Final CTA", heading: "Final CTA Section" },
       fundamental: { eyebrow: "Fundamental", heading: "Fundamental Section" },
-      hero: { eyebrow: "Hero", heading: "Hero Section" },
+      hero: {
+        eyebrow: "ATTENTION ACTIVE ADULTS WHO WANT TO STAY STRONG, CAPABLE & FREE AS THEY AGE",
+        heading: "DON'T LET YOUR BODY BECOME THE LIMIT ON THE LIFE YOU WANT TO LIVE.",
+        description:
+          "Your body will be with you for the rest of your life. Learn to understand how it moves-and build the awareness and practical knowledge you can keep practicing for decades to come.",
+        primaryCta: "Book Movement Discovery",
+        secondaryCta: "Explore the Workshop",
+        trustItems: ["30-minute complimentary session", "No experience required", "Explore your movement"],
+        mediaLabel: "VIDEO - REAL NLF WORKSHOP / MOVEMENT ASSESSMENT",
+      },
       movementDiscovery: { eyebrow: "Movement Discovery", heading: "Movement Discovery Section" },
       practice: { eyebrow: "Practice", heading: "Practice Section" },
       recognition: { eyebrow: "Recognition", heading: "Recognition Section" },
@@ -94,7 +113,16 @@ export const workshopCopy: Record<Locale, WorkshopCopy> = {
       faq: { eyebrow: "Câu hỏi thường gặp", heading: "Phần Câu hỏi thường gặp" },
       finalCta: { eyebrow: "Kêu gọi hành động", heading: "Phần Kêu gọi hành động cuối" },
       fundamental: { eyebrow: "Nền tảng", heading: "Phần Nền tảng" },
-      hero: { eyebrow: "Mở đầu", heading: "Phần Mở đầu" },
+      hero: {
+        eyebrow: "Dành cho người trưởng thành năng động muốn giữ cơ thể mạnh mẽ, linh hoạt và tự do khi lớn tuổi",
+        heading: "Đừng để cơ thể trở thành giới hạn của cuộc sống bạn muốn sống.",
+        description:
+          "Cơ thể sẽ đồng hành cùng bạn suốt phần đời còn lại. Học cách hiểu cơ thể bạn chuyển động như thế nào-và xây dựng nhận thức cùng kiến thức thực tế để tiếp tục rèn luyện trong nhiều thập kỷ tới.",
+        primaryCta: "Đặt lịch Movement Discovery",
+        secondaryCta: "Khám phá Workshop",
+        trustItems: ["Buổi tư vấn miễn phí 30 phút", "Không cần kinh nghiệm trước", "Khám phá chuyển động của bạn"],
+        mediaLabel: "VIDEO - WORKSHOP NLF THỰC TẾ / ĐÁNH GIÁ CHUYỂN ĐỘNG",
+      },
       movementDiscovery: { eyebrow: "Khám phá chuyển động", heading: "Phần Khám phá chuyển động" },
       practice: { eyebrow: "Thực hành", heading: "Phần Thực hành" },
       recognition: { eyebrow: "Nhận diện", heading: "Phần Nhận diện" },

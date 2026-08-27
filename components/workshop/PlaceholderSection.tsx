@@ -9,12 +9,14 @@ export type WorkshopSectionProps = {
 
 export function PlaceholderSection({
   copy,
+  id,
   variant = "default",
 }: WorkshopSectionProps & {
+  id?: string;
   variant?: SectionVariant;
 }) {
   return (
-    <Section variant={variant}>
+    <Section id={id} variant={variant}>
       <Container>
         <SectionHeader eyebrow={copy.eyebrow} heading={copy.heading} />
       </Container>

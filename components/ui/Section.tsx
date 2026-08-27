@@ -6,6 +6,7 @@ export type SectionVariant = "default" | "muted" | "dark";
 export type SectionProps = {
   children: ReactNode;
   className?: string;
+  id?: string;
   variant?: SectionVariant;
 };
 
@@ -19,6 +20,10 @@ function cx(...classes: Array<string | false | undefined>) {
   return classes.filter(Boolean).join(" ");
 }
 
-export function Section({ children, className, variant = "default" }: SectionProps) {
-  return <section className={cx(styles.section, sectionVariants[variant], className)}>{children}</section>;
+export function Section({ children, className, id, variant = "default" }: SectionProps) {
+  return (
+    <section className={cx(styles.section, sectionVariants[variant], className)} id={id}>
+      {children}
+    </section>
+  );
 }
