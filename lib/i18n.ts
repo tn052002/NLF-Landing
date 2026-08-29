@@ -18,6 +18,12 @@ export type HeroCopy = {
   mediaLabel: string;
 };
 
+export type RecognitionCopy = {
+  heading: string;
+  items: string[];
+  question: string;
+};
+
 export type WorkshopCopy = {
   header: {
     ariaLabel: string;
@@ -34,7 +40,7 @@ export type WorkshopCopy = {
     hero: HeroCopy;
     movementDiscovery: SectionCopy;
     practice: SectionCopy;
-    recognition: SectionCopy;
+    recognition: RecognitionCopy;
     team: SectionCopy;
     testimonials: SectionCopy;
     tryIt: SectionCopy;
@@ -91,7 +97,17 @@ export const workshopCopy: Record<Locale, WorkshopCopy> = {
       },
       movementDiscovery: { eyebrow: "Movement Discovery", heading: "Movement Discovery Section" },
       practice: { eyebrow: "Practice", heading: "Practice Section" },
-      recognition: { eyebrow: "Recognition", heading: "Recognition Section" },
+      recognition: {
+        heading: "Does this sound familiar?",
+        items: [
+          "You exercise regularly, but feel stiffer than before.",
+          "Stretching helps, but the tightness returns.",
+          "One side moves differently from the other.",
+          "Your body works, but doesn't feel as free.",
+          "You want to remain capable for decades to come.",
+        ],
+        question: "If your body feels this way now, how do you want it to feel ten or twenty years from now?",
+      },
       team: { eyebrow: "Team", heading: "Team Section" },
       testimonials: { eyebrow: "Testimonials", heading: "Testimonials Section" },
       tryIt: { eyebrow: "Try It", heading: "Try It Section" },
@@ -125,7 +141,18 @@ export const workshopCopy: Record<Locale, WorkshopCopy> = {
       },
       movementDiscovery: { eyebrow: "Khám phá chuyển động", heading: "Phần Khám phá chuyển động" },
       practice: { eyebrow: "Thực hành", heading: "Phần Thực hành" },
-      recognition: { eyebrow: "Nhận diện", heading: "Phần Nhận diện" },
+      recognition: {
+        heading: "Điều này có quen thuộc với bạn không?",
+        items: [
+          "Bạn tập luyện đều đặn, nhưng cơ thể vẫn cứng hơn trước.",
+          "Giãn cơ có hiệu quả, nhưng cảm giác căng lại quay trở lại.",
+          "Một bên cơ thể chuyển động khác với bên còn lại.",
+          "Cơ thể vẫn hoạt động, nhưng không còn cảm giác tự do.",
+          "Bạn muốn duy trì khả năng vận động trong nhiều thập kỷ tới.",
+        ],
+        question:
+          "Nếu cơ thể bạn đang cảm thấy như vậy bây giờ, bạn muốn nó cảm thấy thế nào trong mười hay hai mươi năm nữa?",
+      },
       team: { eyebrow: "Đội ngũ", heading: "Phần Đội ngũ" },
       testimonials: { eyebrow: "Cảm nhận", heading: "Phần Cảm nhận" },
       tryIt: { eyebrow: "Thử ngay", heading: "Phần Thử ngay" },
