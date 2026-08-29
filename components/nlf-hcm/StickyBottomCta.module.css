@@ -1,0 +1,40 @@
+.bar {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 40;
+  display: none;
+  gap: 10px;
+  padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+  background: color-mix(in srgb, var(--bone), white 12%);
+  border-top: 1px solid var(--border);
+  box-shadow: 0 -12px 38px rgba(7, 27, 44, 0.12);
+}
+
+.primary,
+.secondary {
+  flex: 1;
+  min-width: 0;
+  min-height: 46px;
+  padding-inline: 12px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.primary {
+  background: var(--deep-navy);
+  border-color: var(--deep-navy);
+  color: var(--bone);
+}
+
+.secondary {
+  background: var(--bone);
+  color: var(--deep-navy);
+}
+
+@media (max-width: 700px) {
+  .bar {
+    display: flex;
+  }
+}

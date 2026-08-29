@@ -73,8 +73,8 @@
 }
 
 .close {
-  min-height: 38px;
-  padding: 8px 12px;
+  min-height: 44px;
+  padding: 10px 14px;
   color: var(--deep-navy);
   font-size: 0.78rem;
   font-weight: 760;

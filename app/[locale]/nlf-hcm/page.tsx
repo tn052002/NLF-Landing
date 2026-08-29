@@ -10,10 +10,12 @@ import { NotSureSection } from "@/components/nlf-hcm/NotSureSection";
 import { ProofHeroSection } from "@/components/nlf-hcm/ProofHeroSection";
 import { ProofWallSection } from "@/components/nlf-hcm/ProofWallSection";
 import { RegistrationFrame } from "@/components/nlf-hcm/RegistrationFrame";
+import { StickyBottomCta } from "@/components/nlf-hcm/StickyBottomCta";
 import { TeamSection } from "@/components/nlf-hcm/TeamSection";
 import { WhatIsNlfSection } from "@/components/nlf-hcm/WhatIsNlfSection";
 import { WorkshopExperienceSection } from "@/components/nlf-hcm/WorkshopExperienceSection";
 import { isLocale, nlfHcmCopy } from "@/lib/i18n";
+import styles from "./page.module.css";
 
 export default async function NlfHcmPage({ params }: PageProps<"/[locale]/nlf-hcm">) {
   const { locale } = await params;
@@ -25,7 +27,7 @@ export default async function NlfHcmPage({ params }: PageProps<"/[locale]/nlf-hc
   const copy = nlfHcmCopy[locale];
 
   return (
-    <main>
+    <main className={styles.main}>
       <NlfHcmHeader copy={copy.header} />
       <ProofHeroSection copy={copy.proofHero} />
       <BeforeAfterProofSection copy={copy.beforeAfterProof} />
@@ -39,6 +41,7 @@ export default async function NlfHcmPage({ params }: PageProps<"/[locale]/nlf-hc
       <NotSureSection copy={copy.notSure} />
       <FinalCtaSection copy={copy.finalCta} />
       <Footer copy={copy.footer} />
+      <StickyBottomCta copy={copy.finalCta} />
       <RegistrationFrame copy={copy.registration} />
     </main>
   );

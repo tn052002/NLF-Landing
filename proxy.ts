@@ -13,7 +13,12 @@ export function proxy(request: NextRequest) {
   const locale = getLocaleFromAcceptLanguage(request.headers.get("accept-language"));
   const url = request.nextUrl.clone();
 
-  if (pathname === "/" || pathname === "/workshop") {
+  if (pathname === "/") {
+    url.pathname = `/${locale}/nlf-hcm`;
+    return NextResponse.redirect(url);
+  }
+
+  if (pathname === "/workshop") {
     url.pathname = `/${locale}/workshop`;
     return NextResponse.redirect(url);
   }

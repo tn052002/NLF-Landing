@@ -125,16 +125,27 @@
 }
 
 .dot {
-  width: 10px;
-  height: 10px;
+  width: 44px;
+  height: 44px;
   padding: 0;
   background: transparent;
-  border: 1px solid var(--deep-navy);
+  border: 0;
   border-radius: 999px;
   cursor: pointer;
 }
 
-.dot[aria-current="true"] {
+.dot::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  display: block;
+  margin: auto;
+  background: transparent;
+  border: 1px solid var(--deep-navy);
+  border-radius: 999px;
+}
+
+.dot[aria-current="true"]::before {
   background: var(--flow-teal);
   border-color: var(--flow-teal);
 }

@@ -89,9 +89,9 @@ export function FeaturedTestimonialSection({ copy }: { copy: NlfHcmFeaturedTesti
 
                       <article className={styles.story}>
                         <blockquote className={styles.quote}>
-                          <p>"{story.quote.cameBecause}"</p>
-                          <p>"{story.quote.surprisedMe}"</p>
-                          <p>"{story.quote.changed}"</p>
+                          <p>&ldquo;{story.quote.cameBecause}&rdquo;</p>
+                          <p>&ldquo;{story.quote.surprisedMe}&rdquo;</p>
+                          <p>&ldquo;{story.quote.changed}&rdquo;</p>
                         </blockquote>
 
                         <footer className={styles.meta}>

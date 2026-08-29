@@ -40,7 +40,9 @@ export function Button(props: ButtonProps) {
   const buttonClassName = cx(styles.button, buttonVariants[variant], className);
 
   if (isLinkButton(props)) {
-    const { children, className: _className, variant: _variant, ...linkProps } = props;
+    const { children, className: omittedClassName, variant: omittedVariant, ...linkProps } = props;
+    void omittedClassName;
+    void omittedVariant;
 
     return (
       <a className={buttonClassName} {...linkProps}>
@@ -49,7 +51,9 @@ export function Button(props: ButtonProps) {
     );
   }
 
-  const { children, className: _className, variant: _variant, ...buttonProps } = props;
+  const { children, className: omittedClassName, variant: omittedVariant, ...buttonProps } = props;
+  void omittedClassName;
+  void omittedVariant;
 
   return (
     <button className={buttonClassName} {...buttonProps}>

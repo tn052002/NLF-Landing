@@ -7,14 +7,12 @@
   padding: 20px;
 }
 
-.frame:not(:target) {
-  display: none;
-}
-
 .backdrop {
   position: absolute;
   inset: 0;
   background: rgba(7, 27, 44, 0.74);
+  border: 0;
+  cursor: pointer;
 }
 
 .dialog {
@@ -33,8 +31,8 @@
 }
 
 .close {
-  width: 38px;
-  height: 38px;
+  width: 44px;
+  height: 44px;
   position: absolute;
   top: 14px;
   right: 14px;
@@ -43,10 +41,10 @@
   color: var(--deep-navy);
   font-size: 1.55rem;
   line-height: 1;
-  text-decoration: none;
   background: var(--bone);
   border: 1px solid var(--border);
   border-radius: 999px;
+  cursor: pointer;
 }
 
 .header {
