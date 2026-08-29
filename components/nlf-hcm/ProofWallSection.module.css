@@ -1,0 +1,35 @@
+.section {
+  background: var(--deep-navy);
+  color: var(--bone);
+}
+
+.content {
+  display: grid;
+  gap: clamp(34px, 5vw, 64px);
+}
+
+.header {
+  display: grid;
+  gap: 12px;
+}
+
+.header p {
+  margin: 0;
+  color: var(--flow-teal);
+  font-size: 0.8rem;
+  font-weight: 820;
+  letter-spacing: 0.13em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.header h2 {
+  max-width: 860px;
+  margin: 0;
+  color: var(--bone);
+  font-size: clamp(2.4rem, 5.8vw, 4.7rem);
+  font-weight: 780;
+  letter-spacing: 0;
+  line-height: 0.98;
+  text-transform: uppercase;
+}

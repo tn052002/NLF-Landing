@@ -1,0 +1,130 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.85fr 1fr;
+  grid-auto-rows: minmax(150px, auto);
+  gap: clamp(12px, 2vw, 22px);
+  align-items: stretch;
+}
+
+.item {
+  min-height: 180px;
+  margin: 0;
+}
+
+.item1 {
+  min-height: 360px;
+  grid-row: span 2;
+}
+
+.item2 {
+  min-height: 220px;
+}
+
+.item3 {
+  min-height: 300px;
+  grid-row: span 2;
+}
+
+.item4 {
+  min-height: 250px;
+}
+
+.item5 {
+  min-height: 300px;
+  grid-column: span 2;
+}
+
+.item6 {
+  min-height: 230px;
+}
+
+.media {
+  height: 100%;
+  min-height: inherit;
+  position: relative;
+  display: grid;
+  align-content: end;
+  gap: 10px;
+  overflow: hidden;
+  padding: clamp(18px, 2.5vw, 28px);
+  background:
+    linear-gradient(180deg, rgba(13, 43, 69, 0.05), rgba(13, 43, 69, 0.58)),
+    linear-gradient(135deg, rgba(221, 213, 199, 0.88), rgba(111, 198, 206, 0.38));
+  border: 1px solid color-mix(in srgb, var(--sand), var(--deep-navy) 10%);
+  border-radius: var(--radius-sm);
+  color: var(--bone);
+}
+
+.media::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(244, 246, 245, 0.12) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(244, 246, 245, 0.1) 1px, transparent 1px);
+  background-size: 38px 38px;
+  opacity: 0.22;
+}
+
+.type {
+  width: fit-content;
+  position: relative;
+  z-index: 1;
+  color: var(--flow-teal);
+  font-size: 0.72rem;
+  font-weight: 820;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.label {
+  max-width: 18ch;
+  position: relative;
+  z-index: 1;
+  color: var(--bone);
+  font-size: clamp(1.15rem, 2vw, 1.8rem);
+  font-weight: 760;
+  letter-spacing: 0;
+  line-height: 1.08;
+}
+
+.path {
+  position: relative;
+  z-index: 1;
+  color: rgba(244, 246, 245, 0.72);
+  font-size: 0.78rem;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .item1,
+  .item3,
+  .item5 {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+}
+
+@media (max-width: 620px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .item,
+  .item1,
+  .item2,
+  .item3,
+  .item4,
+  .item5,
+  .item6 {
+    min-height: 230px;
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
