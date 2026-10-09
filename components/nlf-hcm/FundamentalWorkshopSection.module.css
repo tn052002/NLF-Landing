@@ -1,6 +1,0 @@
-.section {
-  background:
-    linear-gradient(135deg, rgba(7, 27, 44, 0.42), rgba(13, 43, 69, 0)),
-    var(--deep-navy);
-  color: var(--bone);
-}

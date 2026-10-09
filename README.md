@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NLF Vietnam
 
-## Getting Started
+Nuxt 4 + Vue + TypeScript, bilingual VI/EN landing page and server-side Neon registration API. This `nlf-vietnam` branch replaces the Next.js runtime; the original app is untouched on `workshop-landing`.
 
-First, run the development server:
+## Run locally
 
-```bash
+```sh
+npm ci
+cp .env.example .env
+# Fill in the DEVELOPMENT branch connection strings and a random rate-limit secret.
+npm run db:migrate
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `/vi` or `/en`. Root redirects to `/vi`. Browser language switching preserves in-memory form details; nothing personal is stored in localStorage.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Verify
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```sh
+npm test
+npm run typecheck
+npm run build
+npx playwright install chromium
+npm run test:e2e
+# Only against the development database; writes a clearly labelled synthetic lead:
+NLF_TEST_DATABASE=development node --env-file=.env --import tsx scripts/test-database.ts
+```
 
-## Learn More
+## Edit content
 
-To learn more about Next.js, take a look at the following resources:
+- Copy: `app/content/vi.json` and `en.json` (matching named keys).
+- Media and Zalo link: `app/content/media.ts`, files in `public/media/`.
+- Palette/layout: `app/assets/css/main.css`.
+- Sections/order: `app/components/sections/`, `app/pages/[locale]/index.vue`.
+- Programmes: `shared/catalogue.ts`; database changes require a new SQL migration.
+- Dates/fees: `workshop_events` in Neon. No real events are seeded. Registration status derives from server-validated event state.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Backend
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+`POST /api/registrations` validates input, rate limits, checks origin and CAPTCHA, and writes an enquiry plus outbox event atomically. It returns a reference only. There is no public endpoint exposing leads and no admin UI yet. See `docs/architecture.md` for integration, privacy and schema decisions.
 
-## Deploy on Vercel
+Neon project: `icy-sun-02259763` (Singapore). Development branch: `br-plain-hat-b3c1qf52` / `nlf-vietnam`. Production branch remains unchanged. Existing Neon Auth is preserved; the public form does not require login. No extra storage bucket or sample Function was deployed.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Before publishing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Use a Nuxt server-capable host, not static export. Set `NUXT_DATABASE_URL`, `NUXT_RATE_LIMIT_SECRET`, `NUXT_ALLOWED_ORIGIN`, `NUXT_PUBLIC_SITE_URL`, `NUXT_TURNSTILE_SECRET`, and `NUXT_PUBLIC_TURNSTILE_SITE_KEY` in host secrets. Production submissions deliberately return 503 without Turnstile configuration. Turnstile action is `registration`; hostname must match allowed origin. Local `nuxt dev` can test without CAPTCHA. Set `NUXT_PUBLIC_PREVIEW=false` only when ready for indexing.
+
+Run migrations on production only after approval. Review privacy contact/retention/deletion procedures, replace illustration/testimonial placeholders with approved evidence, confirm trainer credentials and event policies, and decide staff access to leads. The checked-in outbox has no dispatcher; no notifications are sent. This branch is not a deployed site.

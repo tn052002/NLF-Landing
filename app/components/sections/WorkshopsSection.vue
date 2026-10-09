@@ -1,0 +1,8 @@
+<script setup lang="ts">
+import { programmes, type WorkshopEvent } from '~~/shared/catalogue'
+defineProps<{events:WorkshopEvent[];unavailable:boolean}>()
+defineEmits<{select:[programme:string,eventId?:string]}>()
+const {t,locale}=useCopy()
+function date(value:string){ return new Intl.DateTimeFormat(locale.value==='vi'?'vi-VN':'en-GB',{dateStyle:'medium',timeZone:'Asia/Ho_Chi_Minh'}).format(new Date(value)) }
+</script>
+<template><section id="workshops" class="section"><div class="wrap"><div class="section-head"><h2 v-html="t('workshops.title')" /><p>{{ t('workshops.intro') }}</p></div><p v-if="unavailable" class="muted" role="status">{{ t('workshops.unavailable') }}</p><div class="cards"><article v-for="p in programmes" :key="p.id" class="card" :class="{featured:p.id==='fundamental'}"><span class="eyebrow">{{ t(`${p.id}.tag`) }}</span><h3>{{ p.name }}</h3><p>{{ t(`${p.id}.title`) }}</p><p>{{ t(`${p.id}.body`) }}</p><template v-if="events.some(e=>e.programmeId===p.id)"><div v-for="event in events.filter(e=>e.programmeId===p.id)" :key="event.id" class="event"><p>{{ date(event.startsAt) }} – {{ date(event.endsAt) }}<br>{{ event.location }}</p><p>{{ t('workshops.fee') }}: {{ event.feeVnd===null?t('workshops.tbc'):new Intl.NumberFormat(locale==='vi'?'vi-VN':'en-US',{style:'currency',currency:'VND'}).format(event.feeVnd) }}</p><button class="btn" @click="$emit('select',p.id,event.id)">{{ t(event.status==='full'?'workshops.full':'workshops.open') }}</button></div></template><template v-else><p class="small" v-html="t(`${p.id}.facts`)" /><button class="btn" @click="$emit('select',p.id)">{{ t(`${p.id}.cta`) }}</button></template></article></div></div></section></template>
