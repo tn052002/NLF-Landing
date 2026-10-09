@@ -1,4 +1,5 @@
 import {registrationSchema} from '../../shared/registration'
+import {readRegistrationBody} from '../utils/registrationBody'
 import {consumeLimit,existingRegistration,hash,RegistrationError,saveRegistration} from '../services/registrations'
 export default defineEventHandler(async(event)=>{
   const config=useRuntimeConfig(event)
@@ -6,11 +7,7 @@ export default defineEventHandler(async(event)=>{
   const allowed=config.allowedOrigin || (import.meta.dev?getRequestURL(event).origin:'')
   if(!allowed||origin!==allowed)throw createError({statusCode:403,statusMessage:'Origin not allowed'})
   if(!getHeader(event,'content-type')?.startsWith('application/json'))throw createError({statusCode:415,statusMessage:'JSON required'})
-  let size=0
-  const chunks:Buffer[]=[]
-  for await(const chunk of event.node.req){const buffer=Buffer.from(chunk);size+=buffer.length;if(size>16384)throw createError({statusCode:413,statusMessage:'Request too large'});chunks.push(buffer)}
-  let body:unknown
-  try{body=JSON.parse(Buffer.concat(chunks).toString('utf8'))}catch{throw createError({statusCode:400,statusMessage:'Invalid JSON'})}
+  const body=await readRegistrationBody(event)
   const parsed=registrationSchema.safeParse(body)
   if(!parsed.success)throw createError({statusCode:400,statusMessage:'Invalid registration'})
   const input=parsed.data
