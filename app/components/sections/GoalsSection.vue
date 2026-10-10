@@ -1,2 +1,2 @@
 <script setup lang="ts">const {t}=useCopy()</script>
-<template><section class="section"><div class="wrap intro"><h2>{{ t('goals.title') }}</h2><p>{{ t('goals.body') }}</p><p>{{ t('goals.note') }}</p></div></section></template>
+<template><section class="section"><div class="wrap"><div class="intro"><h2>{{ t('goals.title') }}</h2><p>{{ t('goals.body') }}</p></div><div class="goal-cards mt"><article v-for="key in ['daily','enjoy','understand']" :key="key" class="card"><h3>{{ t(`goals.${key}Title`) }}</h3><p>{{ t(`goals.${key}Body`) }}</p></article></div><p class="intro mt">{{ t('goals.note') }}</p></div></section></template>
